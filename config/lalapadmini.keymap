@@ -171,6 +171,29 @@
             bindings = <&mkp LCLK>;
             label = "MACRO_LTAP";
         };
+
+        mission: mission {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(UP_ARROW)>, <&macro_press>;
+
+            label = "MISSION";
+        };
+
+        launchpad: launchpad {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LG(L))>;
+            label = "LAUNCHPAD";
+        };
+
+        capture: capture {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N5))>, <&macro_press>;
+
+            label = "CAPTURE";
+        };
     };
 
     keymap {
