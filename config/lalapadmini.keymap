@@ -145,9 +145,24 @@
             key-positions = <10 11>;
         };
 
-        COMBO_WIN {
-            bindings = <&kp LWIN>;
-            key-positions = <30 31>;
+        combo_semi_colon {
+            bindings = <&none>;
+            key-positions = <15 16>;
+        };
+
+        combo_single_quote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <18 17>;
+        };
+
+        combo_left {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <12 13>;
+        };
+
+        combo_right {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <13 14>;
         };
     };
 
