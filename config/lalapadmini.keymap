@@ -162,6 +162,16 @@
             bindings = <&kp RIGHT_PARENTHESIS>;
             key-positions = <13 14>;
         };
+
+        l_disp {
+            bindings = <&kp LA(LC(D))>;
+            key-positions = <20 21>;
+        };
+
+        center_disp {
+            bindings = <&kp LA(LC(F))>;
+            key-positions = <21 22>;
+        };
     };
 
     macros {
