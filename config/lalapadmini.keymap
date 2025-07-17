@@ -252,7 +252,7 @@
 &trans                &trans                                &trans             &trans  &trans         &trans                  &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_right_left>, <&volume_up_down>;
+            sensor-bindings = <&volume_up_down>, <&volume_up_down>;
         };
 
         NUM_layer {
