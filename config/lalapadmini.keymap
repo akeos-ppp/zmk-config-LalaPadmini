@@ -248,7 +248,7 @@
         TERTIARY_LAYER {
             display-name = "tertiary_layer";
             bindings = <
-&kp ESCAPE            &kp LS(LC(TAB))         &kp UP_ARROW  &kp LC(TAB)        &trans  &kp PAGE_UP    &kp HOME  &kp UP_ARROW  &kp END    &kp PRINTSCREEN
+&kp ESCAPE            &kp LS(LC(TAB))         &kp UP_ARROW  &kp LC(TAB)        &trans  &kp PAGE_UP    &kp HOME  &kp UP_ARROW  &kp END    &kp RS(RG(RC(NUMBER_3)))
 &kp CARET             &kp LEFT_ARROW          &kp DOWN      &kp RIGHT          &trans  &kp PAGE_DOWN  &kp LEFT  &kp DOWN      &kp RIGHT  &none
 &mt LEFT_SHIFT TILDE  &kp LS(LG(LEFT_ARROW))  &trans        &kp LS(LG(RIGHT))  &trans  &kp BACKSLASH  &mkp MB4  &none         &mkp MB5   &kp RIGHT_SHIFT
 &trans                &trans                                &trans             &trans  &trans         &trans                  &trans     &trans
