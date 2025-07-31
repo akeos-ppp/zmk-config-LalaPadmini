@@ -184,6 +184,11 @@
             bindings = <&kp LA(LC(ENTER))>;
             key-positions = <23 24>;
         };
+
+        l_com {
+            bindings = <&kp LEFT_WIN>;
+            key-positions = <30 31>;
+        };
     };
 
     macros {
