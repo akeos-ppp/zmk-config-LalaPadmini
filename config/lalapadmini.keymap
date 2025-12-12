@@ -15,13 +15,15 @@
 #define SCROLL_L_LAYER  7
 
 // Mouse Scroll Value
+
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 // cirque trackpad input&layer control
+
 &glidepoint_listener_R {
     input-processors =
-        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_xy_scaler 3 2>,
+        <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+        <&zip_xy_scaler 8 4>,
         <&zip_temp_layer MOUSE_R_LAYER 300>;
 
     lowspeedmode {
@@ -37,7 +39,7 @@
         input-processors =
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
-            <&zip_scroll_scaler 1 32>;
+            <&zip_scroll_scaler 1 24>;
     };
 };
 
@@ -126,7 +128,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "td_mo12";
             #binding-cells = <0>;
-            bindings = <&mo 1>, <&mo 2>;
+            bindings = <&mo 2>, <&mo 3>;
         };
     };
 
@@ -143,8 +145,48 @@
             key-positions = <10 11>;
         };
 
-        COMBO_WIN {
-            bindings = <&kp LWIN>;
+        combo_semi_colon {
+            bindings = <&none>;
+            key-positions = <15 16>;
+        };
+
+        combo_single_quote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <18 17>;
+        };
+
+        combo_left {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <12 13>;
+        };
+
+        combo_right {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <13 14>;
+        };
+
+        l_disp {
+            bindings = <&kp LA(LC(D))>;
+            key-positions = <20 21>;
+        };
+
+        center_disp {
+            bindings = <&kp LA(LC(F))>;
+            key-positions = <21 22>;
+        };
+
+        right_disp {
+            bindings = <&kp LA(LC(G))>;
+            key-positions = <22 23>;
+        };
+
+        full_disp {
+            bindings = <&kp LA(LC(ENTER))>;
+            key-positions = <23 24>;
+        };
+
+        l_com {
+            bindings = <&kp LEFT_WIN>;
             key-positions = <30 31>;
         };
     };
@@ -156,6 +198,36 @@
             bindings = <&mkp LCLK>;
             label = "MACRO_LTAP";
         };
+
+        mission: mission {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(UP_ARROW)>, <&macro_press>;
+
+            label = "MISSION";
+        };
+
+        launchpad: launchpad {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(LG(L))>;
+            label = "LAUNCHPAD";
+        };
+
+        capture: capture {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N5))>, <&macro_press>;
+
+            label = "CAPTURE";
+        };
+
+        spot_app: spot_app {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RG(SPACE)>;
+            label = "SPOT_APP";
+        };
     };
 
     keymap {
@@ -166,10 +238,10 @@
             sensor-bindings = <&scroll_down_up>, <&scroll_up_down>;
 
             bindings = <
-&kp Q             &kp W         &kp E  &kp R      &kp T  &kp Y            &kp U      &kp I      &kp O                    &kp P
-&kp A             &kp S         &kp D  &kp F      &kp G  &kp H            &kp J      &kp K      &kp L                    &mt2 EQUAL MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C  &kp V      &kp B  &kp N            &kp M      &kp COMMA  &kp PERIOD               &mt RSHIFT SLASH
-&kp LCTRL         &kp LEFT_ALT         &kp SPACE  &mo 1  &lt 2 BACKSPACE  &kp ENTER             &mt CAPSLOCK LANGUAGE_2  &mt RCTRL LANGUAGE_1
+&kp Q             &kp W              &kp E  &kp R        &kp T            &kp Y                       &kp U        &kp I      &kp O              &kp P
+&kp A             &kp S              &kp D  &kp F        &kp G            &kp H                       &kp J        &kp K      &kp L              &mt2 EQUAL MINUS
+&mt LEFT_SHIFT Z  &kp X              &kp C  &kp V        &kp B            &kp N                       &kp M        &kp COMMA  &kp PERIOD         &mt RSHIFT SLASH
+&kp TAB           &mt LEFT_ALT SEMI         &lt 2 SPACE  &lt 1 BACKSPACE  &mt RIGHT_COMMAND CAPSLOCK  &lt 1 ENTER             &kp DOUBLE_QUOTES  &kp EQUAL
             >;
         };
 
@@ -178,44 +250,44 @@
             sensor-bindings = <&scroll_left_right>, <&scroll_left_right>;
 
             bindings = <
-&mt2 F1 NUMBER_1  &mt2 F2 NUMBER_2  &mt2 F3 NUMBER_3  &mt2 F4 NUMBER_4  &mt2 F5 N5         &kp KP_COMMA     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_DIVIDE
-&mt2 F6 NUMBER_6  &mt2 F7 N7        &mt2 F8 N8        &mt2 F9 N9        &mt2 F10 N0        &kp KP_DOT       &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_ASTERISK
-&mt2 F11 GRAVE    &mt2 F12 SQT      &kp SEMICOLON     &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_MINUS
-&trans            &trans                              &trans            &trans             &kp DELETE       &trans                            &none            &kp KP_PLUS
+&kp NUMBER_1   &kp NUMBER_2      &kp NUMBER_3  &kp NUMBER_4  &kp N5        &kp NUMBER_6      &kp N7             &kp N8          &kp N9             &kp N0
+&kp AMPERSAND  &kp SINGLE_QUOTE  &trans        &trans        &kp ASTERISK  &kp EXCLAMATION   &kp AT_SIGN        &kp HASH        &kp DOLLAR         &kp PERCENT
+&trans         &trans            &trans        &trans        &kp SLASH     &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_BRACE  &kp RIGHT_BRACE    &kp NON_US_BACKSLASH
+&trans         &trans                          &trans        &trans        &kp DELETE        &trans                             &kp DOUBLE_QUOTES  &kp PIPE
             >;
         };
 
         TERTIARY_LAYER {
             display-name = "tertiary_layer";
             bindings = <
-&kp EXCLAMATION       &kp AT_SIGN        &kp HASH      &kp DOLLAR            &kp PERCENT            &kp PAGE_UP    &kp HOME  &kp UP_ARROW  &kp END    &kp PRINTSCREEN
-&kp CARET             &kp AMPERSAND      &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PAGE_DOWN  &kp LEFT  &kp DOWN      &kp RIGHT  &none
-&mt LEFT_SHIFT TILDE  &kp DOUBLE_QUOTES  &kp COLON     &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp BACKSLASH  &mkp MB4  &none         &mkp MB5   &kp RIGHT_SHIFT
-&trans                &trans                           &trans                &trans                 &trans         &trans                  &trans     &trans
+&kp ESCAPE            &kp LS(LC(TAB))         &kp UP_ARROW  &kp LC(TAB)        &trans  &kp PAGE_UP    &kp HOME  &kp UP_ARROW  &kp END    &kp RS(RG(RC(NUMBER_3)))
+&kp CARET             &kp LEFT_ARROW          &kp DOWN      &kp RIGHT          &trans  &kp PAGE_DOWN  &kp LEFT  &kp DOWN      &kp RIGHT  &none
+&mt LEFT_SHIFT TILDE  &kp LS(LG(LEFT_ARROW))  &trans        &kp LS(LG(RIGHT))  &trans  &kp BACKSLASH  &mkp MB4  &none         &mkp MB5   &kp RIGHT_SHIFT
+&trans                &trans                                &trans             &trans  &trans         &trans                  &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_left_right>, <&scroll_left_right>;
+            sensor-bindings = <&volume_up_down>, <&volume_up_down>;
         };
 
-        SYSTEM_LAYER {
+        system_layer {
             display-name = "system_layer";
             sensor-bindings = <&volume_up_down>, <&volume_up_down>;
 
             bindings = <
-&trans  &trans  &trans  &trans       &trans      &out OUT_TOG  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3
-&trans  &trans  &trans  &bootloader  &sys_reset  &sys_reset    &bootloader   &bt BT_CLR    &bt BT_CLR_ALL  &trans
-&trans  &trans  &trans  &trans       &trans      &trans        &trans        &trans        &trans          &trans
-&trans  &trans          &trans       &trans      &trans        &trans                      &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &out OUT_TOG  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3
+&trans  &trans  &trans  &trans  &trans  &trans        &trans        &bt BT_CLR    &bt BT_CLR_ALL  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans          &trans
+&trans  &trans          &trans  &trans  &trans        &trans                      &trans          &trans
             >;
         };
 
         MOUSE_R_LAYER {
             display-name = "mouse_r_layer";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &mkp MCLK  &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &MACRO_LTAP  &mkp LCLK  &mkp RCLK  &mo 5
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4     &none      &mkp MB5   &trans
-&trans  &trans          &trans  &trans  &trans  &trans                  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &mo 5      &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &capture  &MACRO_LTAP  &mkp LCLK  &mkp RCLK  &mo 5
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &mission   &spot_app  &trans
+&trans  &trans          &trans  &trans  &trans    &trans                  &trans     &trans
             >;
         };
 
@@ -248,13 +320,22 @@
 &trans  &trans          &trans  &trans  &trans  &trans          &trans  &trans
             >;
         };
+
+        layer_8 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans          &trans  &trans  &trans  &trans          &trans  &trans
+            >;
+        };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
         System_layer {
-            if-layers = <1 2>;
+            if-layers = <2 3>;
             then-layer = <3>;
         };
     };
