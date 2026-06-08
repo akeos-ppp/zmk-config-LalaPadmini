@@ -285,7 +285,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans    &trans       &mo 5      &trans     &trans
 &trans  &trans  &trans  &trans  &trans  &capture  &MACRO_LTAP  &mkp LCLK  &mkp RCLK  &mo 5
-&trans  &trans  &trans  &trans  &trans  &trans    &trans       &mission   &spot_app  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans       &mission   &kp RG(L)  &trans
 &trans  &trans          &trans  &trans  &trans    &trans                  &trans     &trans
             >;
         };
